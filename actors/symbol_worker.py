@@ -12,8 +12,8 @@ from actors.helpers.named_tuples import ResultInstance
 class SymbolWorker:
     """Class responsible for *processing* a specific streamed data symbol.
 
-    **NOTE:** Typically, you would persist the data, here, but since this
-    is a toy example, we are going allow it to be discarded, once it is processed.
+    **NOTE:** IRL, _repsository will probably be something like a Polars
+    dataframe or a database, etc., rather than a list.
     """
 
     def __init__(self, symbol: str, result_queue: Queue) -> None:
@@ -25,18 +25,23 @@ class SymbolWorker:
 
         self._symbol = symbol
         self._result_queue = result_queue
+        self._repository = []
 
     def process_latest_period(self, latest_period: dict) -> None:
         """Process the latest streamed period data.
 
         Args:
             latest_period: The latest period to process.
+        
+        **NOTE:** Here, we are simply loading the 
         """
 
         symbol_latest_period = latest_period.get(self._symbol)
 
         if not symbol_latest_period:
             return
+        
+        self._repository.append(symbol_latest_period)
 
         # TODO: Process the latest period data
 
