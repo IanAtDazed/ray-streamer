@@ -25,6 +25,5 @@ class Streamer:
             return ConnectionError('No more data available.')
         else:
             self._period_number += 1
-            # return [latest_ohlcv_data] # TODO
-            return self._period_number
+            return latest_ohlcv_data # TODO: Serialize
 
