@@ -7,7 +7,7 @@ This could be many scenarios, but this example has been created with intraday st
 
 The more data you are getting, with each call, and the faster the API churns it out, the more headaches you can experience when you are processing it on a single-thread (such as a typical Python application. Even if you are using a blazing fast DataFrame, such as [Polars](https://pola.rs/)):
 
-- Each collection of data will be processed, in turn, resulting in any transformations / analysis being potentially slower than if you could spread that processing out to multiple workers across multiple processors.
+- Each collection of data will be processed, in turn, resulting in any transformations / analysis being potentially slower than if you could spread that processing out to multiple *Worker*s across multiple processors.
 - It's likely that your application won't be making the next call to a 3rd party API until all latest transformations / analysis is complete. This can easily result in the server timing out your connection. That's bad! Especially for something like a trading app.
 
 ## This Solution
@@ -22,8 +22,8 @@ So... This is my *solution*. (Let me know if you do or don't agree!)
   - The streamer is not waiting for current transformations, analysis, etc. to complete until it can make the next API call.
   - The 3rd party API is not having to wait for an extended period of time for the next API call, so it *hopefully* won't time out your connection.
   - It will carry on grabbing data, regardless of whatever else your application is doing.
-- Latest items are grabbed from the *processing* queue and sent to individual worker objects that are created to deal with data belonging to specific tokens.
-  - In this example, a worker is created for each stock symbol, that has been subscribed to, and processes its latest period (OHLCV) data.
-  - **Note:** The latest data is sent to *all* the workers, but they simply ignore data that is not for them.
-    - This should be faster than deciding which worker specific data should be sent to.
-- Once the worker has completed its transformation / analyis / whatever clever stuff you want to add, it puts its latest result onto a results queue.
+- Latest items are grabbed from the *processing* queue and sent to individual *Worker* objects that are created to deal with data belonging to specific tokens.
+  - In this example, a *Worker* is created for each stock symbol, that has been subscribed to, and processes its latest period (OHLCV) data.
+  - **Note:** The latest data is sent to *all* the *Worker*s, but they simply ignore data that is not for them.
+    - This should typically be faster than deciding which *Worker* specific data should be sent to.
+- Once the *Worker* has completed its transformation / analysis / whatever clever stuff you want to add, it puts its latest result onto a results queue.
