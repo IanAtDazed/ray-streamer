@@ -15,15 +15,19 @@ from actors.supervisors.process_supervisor import ProcessSupervisor
 class Administrator:
     """Class for managing the *Supervisor* classes."""
 
-    # TODO
     def __init__(self, stream_symbols: tuple) -> None:
         """Initialize the *Supervisor* classes.
 
         Args:
-            stream_symbols: The symbols to stream.
+            stream_symbols: The symbols to stream and process.
+        
+        **NOTE:**
+        - Because this application fakes its streamed data,
+          the symols in *stream_symbols* will make no difference to
+          what is streamed.
+        - They **WILL** make a difference to what is processed.
         """
 
-        # TODO: Inherit
         self._stream_queue = Queue()
         self._result_queue = Queue()
         self._is_processing = True
