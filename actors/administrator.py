@@ -3,6 +3,8 @@
 This class manages the *Supervisor* classes.
 """
 
+import sys
+
 from ray.util.queue import Queue
 
 from actors.stream_supervisor import StreamSupervisor
@@ -32,13 +34,23 @@ class Administrator:
         self._process_results()
 
     def _process_results(self) -> None:
-        """Process the results."""
+        """Process the results.
+
+        **NOTE:** 
+        -*KeyboardInterrupt* is handled here, so that
+          the application can be stopped gracefully from the command line.
+        - However, if this class formed part of a larger application,
+          you would want to achieve this by setting *self._is_processing*
+          to *False* externally.
+        - In that case, the *KeyboardInterrupt* handling could be removed.
+        """
 
         while self._is_processing:
 
-            # if self._result_queue.empty():
-            #     continue
-
-            result = self._result_queue.get()
-
-            print(result)
+            try:
+                result = self._result_queue.get()
+            except KeyboardInterrupt:
+                self._is_processing = False
+                sys.exit()
+            else:
+                print(result)
