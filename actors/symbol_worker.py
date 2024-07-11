@@ -23,6 +23,11 @@ class SymbolWorker:
             latest_period: The latest period to process.
         """
 
+        symbol_latest_period = latest_period.get(self._symbol)
+
+        if not symbol_latest_period:
+            return
+
         print(self._symbol)
-        print(latest_period)
+        print(symbol_latest_period)
         print()
