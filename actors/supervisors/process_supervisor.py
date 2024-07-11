@@ -49,7 +49,7 @@ class ProcessSupervisor(_BaseSupervisor):
         """Process the streamed data."""
 
         while self._is_processing:
-            data = self._stream_queue.get()
+            data = self._processing_queue.get()
 
             ray.get([symbol_worker.process_latest_period.remote(data)
                      for symbol_worker in self._symbol_workers.values()])

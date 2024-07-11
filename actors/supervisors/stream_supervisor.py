@@ -44,7 +44,7 @@ class StreamSupervisor(_BaseSupervisor):
     def _fetch_from_api(self) -> None:
         """Fetch the data from the API.
 
-        - Typically, puts the latest streamed data on the *_stream_queue*.
+        - Typically, puts the latest streamed data on the *_processing_queue*.
         - If there is an error (such as the API connection closing),
           it stops the streaming process and puts an *ErrorInstance* on the *_result_queue*.
         """
@@ -60,4 +60,4 @@ class StreamSupervisor(_BaseSupervisor):
             self._result_queue.put(ErrorInstance(type(error), str(error)))
 
         else:
-            self._stream_queue.put(latest_period_ohlcv)
+            self._processing_queue.put(latest_period_ohlcv)

@@ -28,14 +28,14 @@ class Administrator:
         - They **WILL** make a difference to what is processed.
         """
 
-        self._stream_queue = Queue()
+        self._processing_queue = Queue()
         self._result_queue = Queue()
         self._is_processing = True
 
         self._process_supervisor = ProcessSupervisor.remote(
-            self._stream_queue, self._result_queue, stream_symbols)
+            self._processing_queue, self._result_queue, stream_symbols)
         self._stream_supervisor = StreamSupervisor.remote(
-            self._stream_queue, self._result_queue, stream_symbols)
+            self._processing_queue, self._result_queue, stream_symbols)
 
         self._process_results()
 

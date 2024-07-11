@@ -25,6 +25,6 @@ class _BaseSupervisor(ABC):
             stream_symbols: The symbols to stream.
         """
 
-        self._stream_queue = stream_queue
+        self._processing_queue = stream_queue
         self._result_queue = result_queue
         self._is_processing = True
