@@ -39,6 +39,6 @@ class SymbolWorker:
         
         self._result_queue.put(symbol_latest_period)
 
-        print(self._symbol)
-        print(symbol_latest_period)
-        print()
+        # print(self._symbol)
+        # print(symbol_latest_period)
+        # print()
