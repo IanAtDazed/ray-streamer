@@ -17,12 +17,16 @@ class Streamer:
         self._period_number = 0
 
     def get_latest_period_data(self) -> None:
-        """Get the latest period data."""
+        """Get the latest period data.
+        
+        Raises:
+            ConnectionError: If no more data is available.
+        """
 
         try:
             latest_ohlcv_data = FAKE_DATA[self._period_number]
-        except IndexError:
-            return ConnectionError('No more data available.')
+        except KeyError:
+            raise ConnectionError('No more data available.')
         else:
             self._period_number += 1
             return latest_ohlcv_data # TODO: Serialize
