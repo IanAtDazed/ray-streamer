@@ -4,31 +4,32 @@ from __future__ import annotations
 from typing import TYPE_CHECKING
 
 import ray.exceptions
+from ray.util.queue import Queue
 
 if TYPE_CHECKING:
     from ray.util.queue import Queue
 
 import ray
 
+from actors.base_supervisor import _BaseSupervisor
 from actors.streamer import Streamer
 from actors.helpers.named_tuples import ErrorInstance
 
-# TODO: Inherit from base class
-
 
 @ray.remote
-class StreamSupervisor:
+class StreamSupervisor(_BaseSupervisor):
     """Class responsible for *fetching* the streamed data."""
 
-    def __init__(
-        self,
-        stream_queue: Queue,
-        result_queue: Queue,
-        stream_symbols: tuple
-    ) -> None:
+    def __init__(self, stream_queue: Queue, result_queue: Queue, stream_symbols: tuple) -> None:
+        """Initialize the class.
 
-        self._stream_queue = stream_queue
-        self._result_queue = result_queue
+        Args:
+            stream_queue: The queue to stream data from.
+            result_queue: The queue to store the processed data.
+            stream_symbols: The symbols to stream.
+        """
+
+        super().__init__(stream_queue, result_queue)
 
         self._streamer = Streamer.remote(stream_symbols)
         self._is_streaming = True
@@ -54,7 +55,7 @@ class StreamSupervisor:
         try:
             latest_period_ohlcv = ray.get(
                 self._streamer.get_latest_period_data.remote())
-        
+
         except ray.exceptions.RayTaskError as e:
             self._is_streaming = False
             error = e.args[0]
