@@ -18,6 +18,10 @@ However, I struggled to find an existing [ray.io](https://www.ray.io/) solution 
 So... This is a *solution* (Let me know if you do or don't agree!)
 
 ## High-Level Overview
-- Streaming takes place on it's own process, and dumps the raw results onto a ray [Queue](ray.util.queue.Queue).
+- Streaming takes place on it's own process, and dumps the raw results onto a ray processing [Queue](ray.util.queue.Queue).
   - The streamer is not waiting for current transformations, analysis, etc. to complete until it can make the next API call.
   - The 3rd party API is not having to wait for an extended period of time for the next API call, so it *hopefully* won't time out your connection.
+  - It will carry on grabbing data, regardless of whatever else your application is doing.
+- Latest items are grabbed from the processing queue and sent to individual worker objects that created to deal with data belonging to specific tokens.
+  - In this example, a worker is created for each stock symbol, that has been subscribed to, and processes its latest period (OHLCV) data.
+- One the worker has completed its transformation / analyis / whatever clever stuff you want to add, it puts its latest result onto a results queue.
