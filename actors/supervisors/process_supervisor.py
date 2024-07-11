@@ -19,16 +19,16 @@ from actors.symbol_worker import SymbolWorker
 class ProcessSupervisor(_BaseSupervisor):
     """Class responsible for *processing* the streamed data."""
 
-    def __init__(self, stream_queue: Queue, result_queue: Queue, stream_symbols: tuple) -> None:
+    def __init__(self, processing_queue: Queue, result_queue: Queue, stream_symbols: tuple) -> None:
         """Initialize the class.
 
         Args:
-            stream_queue: The queue to stream data from.
-            result_queue: The queue to store the processed data.
+            processing_queue: The queue to add streamed data to for processing.
+            result_queue: The queue to to put result data on.
             stream_symbols: The symbols to stream.
         """
 
-        super().__init__(stream_queue, result_queue)
+        super().__init__(processing_queue, result_queue)
 
         self._assign_symbol_workers(stream_symbols)
         self._process_streamed_data()

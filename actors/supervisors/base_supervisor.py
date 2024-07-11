@@ -14,17 +14,17 @@ class _BaseSupervisor(ABC):
 
     def __init__(
         self,
-        stream_queue: Queue,
+        processing_queue: Queue,
         result_queue: Queue
     ) -> None:
         """Initialize the class.
 
         Args:
-            stream_queue: The queue to stream data from.
-            result_queue: The queue to store the processed data.
+            processing_queue: The queue to add streamed data to for processing.
+            result_queue: The queue to to put result data on.
             stream_symbols: The symbols to stream.
         """
 
-        self._processing_queue = stream_queue
+        self._processing_queue = processing_queue
         self._result_queue = result_queue
         self._is_processing = True
