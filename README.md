@@ -1,6 +1,6 @@
 # ray-streamer: Multiprocess data from a streaming API with ray.io
 
-# Why?
+## Purpose
 Imagine you need to stream data, rapidly changing data from an API.
 
 This could be many thing, but I created this with intraday stock market data in mind: For each stock symbol you subscribe to, you might receive latest period price action (OHLCV), Level1, Level2, Time and Sales, etc.
