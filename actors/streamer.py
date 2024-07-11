@@ -26,7 +26,7 @@ class Streamer:
         try:
             latest_ohlcv_data = FAKE_DATA[self._period_number]
         except KeyError:
-            raise ConnectionError('No more data available.')
+            raise ConnectionError('No more data available from API.')
         else:
             self._period_number += 1
             return latest_ohlcv_data # TODO: Serialize
