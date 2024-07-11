@@ -3,8 +3,6 @@
 from __future__ import annotations
 from typing import TYPE_CHECKING
 
-import ray.actor
-
 if TYPE_CHECKING:
     from ray.util.queue import Queue
 
@@ -38,7 +36,7 @@ class ProcessSupervisor:
         """
 
         self._symbol_workers = {
-            symbol: SymbolWorker(symbol)
+            symbol: SymbolWorker(symbol, self._result_queue)
             for symbol in stream_symbols
         }
     
