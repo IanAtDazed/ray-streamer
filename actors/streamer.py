@@ -1,12 +1,16 @@
 """Module containing the *Streamer* class.
 
-**NOTE:**
-- # TODO
+**NOTE**:
+- *Typically* this will be *asyncio" functionality
+    calling a 3rd party Websockets server.
+- For more detail, see: [AsyncIO / Concurrency for Actors](https://docs.ray.io/en/latest/ray-core/actors/async_api.html#asyncio-for-actors)
+- For this example, we are *faking* that part.
 """
 
 import ray
 
 from data.fake_api_data import FAKE_DATA
+
 
 @ray.remote
 class Streamer:
@@ -17,7 +21,7 @@ class Streamer:
 
         Args:
             stream_symbols: The symbols to stream.
-        
+
         **NOTE:**
         - Because this is a fake API, the symbols' data it returns
           is predefined.
@@ -28,7 +32,7 @@ class Streamer:
 
     def get_latest_period_data(self) -> None:
         """Get the latest period data.
-        
+
         Raises:
             ConnectionError: If no more data is available.
         """
@@ -40,4 +44,3 @@ class Streamer:
         else:
             self._period_number += 1
             return latest_ohlcv_data
-
