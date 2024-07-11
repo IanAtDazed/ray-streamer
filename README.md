@@ -19,11 +19,15 @@ So... This is my *solution*. (Let me know if you do or don't agree!)
 
 ## High-Level Overview
 - Streaming takes place on it's own process, and dumps the raw results onto a ray *processing* [Queue](ray.util.queue.Queue).
-  - The streamer is not waiting for current transformations, analysis, etc. to complete until it can make the next API call.
-  - The 3rd party API is not having to wait for an extended period of time for the next API call, so it *hopefully* won't time out your connection.
+  - The streamer is not waiting for current transformations, analysis, etc. to complete before it can make the next API call.
+  - The 3rd party API is not having to wait for an extended period of time for the next API call, so it *hopefully* won't time out the connection.
   - It will carry on grabbing data, regardless of whatever else your application is doing.
-- Latest items are grabbed from the *processing* queue and sent to individual *Worker* objects that are created to deal with data belonging to specific tokens.
-  - In this example, a *Worker* is created for each stock symbol, that has been subscribed to, and processes its latest period (OHLCV) data.
-  - **Note:** The latest data is sent to *all* the *Worker*s, but they simply ignore data that is not for them.
+- Latest items are grabbed from the *processing* queue and sent to individual *Worker* objects that are created to deal with data belonging to specific *labels*.
+  - In this example, a *label* is a stock symbol, and a *Worker* is created for each symbol that has been subscribed to
+  - The *Worker* processes each latest period (OHLCV) as it receives that data.
+  - **Note:** The latest data is actually sent to *all* the *Worker*s, but they simply ignore data that is not for them.
     - This should typically be faster than deciding which *Worker* specific data should be sent to.
-- Once the *Worker* has completed its transformation / analysis / whatever clever stuff you want to add, it puts its latest result onto a results queue.
+- Once the *Worker* has completed its transformation / analysis / whatever clever stuff you want to add, it puts its latest result onto a *results* queue.
+- An *Administrator* object fetches the latest items from the *results* queue in order to do whatever is required with them, after that.
+  - In this case, it simply prints them to the console.
+  - In other scenarios, it might hand them to a callback function of a single-threaded GUI, etc. (I intend to create a simple repo that demonstartes this with PyQt6, sometime in the future.)
