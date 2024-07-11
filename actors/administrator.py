@@ -5,6 +5,7 @@ This class manages the *Supervisor* classes.
 
 import sys
 
+import ray
 from ray.util.queue import Queue
 
 from actors.stream_supervisor import StreamSupervisor
@@ -51,6 +52,7 @@ class Administrator:
                 result = self._result_queue.get()
             except KeyboardInterrupt:
                 self._is_processing = False
+                ray.shutdown()
                 sys.exit()
             else:
                 print(result)
