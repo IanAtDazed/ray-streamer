@@ -6,9 +6,12 @@ from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     from ray.util.queue import Queue
 
+import ray
+
 from actors.helpers.named_tuples import ResultInstance
 
 
+@ray.remote
 class SymbolWorker:
     """Class responsible for *processing* a specific streamed data symbol.
 
@@ -32,7 +35,7 @@ class SymbolWorker:
 
         Args:
             latest_period: The latest period to process.
-        
+
         **NOTE:** Here, we are simply loading the 
         """
 
@@ -40,7 +43,7 @@ class SymbolWorker:
 
         if not symbol_latest_period:
             return
-        
+
         self._repository.append(symbol_latest_period)
 
         # TODO: Process the latest period data
@@ -54,7 +57,7 @@ class SymbolWorker:
                 symbol_latest_period.get('close'),
                 symbol_latest_period.get('volume'),
                 symbol_latest_period.get('datetime'),
-                None # TODO
+                None  # TODO
             )
         )
 
