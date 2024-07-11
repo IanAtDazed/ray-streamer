@@ -44,12 +44,11 @@ class StreamSupervisor(_BaseSupervisor):
 
     def _fetch_from_api(self) -> None:
         """Fetch the data from the API.
-
-        **NOTE**:
-        - *Typically* this will be *asyncio" functionality
-          calling a 3rd party Websockets server.
-        - For more detail, see: [AsyncIO / Concurrency for Actors](https://docs.ray.io/en/latest/ray-core/actors/async_api.html#asyncio-for-actors)
-        - For this example, we are faking that part.
+        
+        Typically, puts the latest streamed data on the *_stream_queue*.
+        
+        If there is an error (such as the API connection closing),
+        it stops the streaming process and puts an *ErrorInstance* on the *_result_queue*.
         """
 
         try:
