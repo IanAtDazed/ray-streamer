@@ -36,7 +36,11 @@ class SymbolWorker:
         Args:
             latest_period: The latest period to process.
 
-        **NOTE:** Here, we are simply loading the 
+        **NOTE:**
+        - Here, we are simply appending the latest data
+          to our repository, and doing a little formatting, before
+          putting it on *_result_queue*.
+        - IRL, we would be doing something a little more interesting!
         """
 
         symbol_latest_period = latest_period.get(self._symbol)
@@ -45,8 +49,6 @@ class SymbolWorker:
             return
 
         self._repository.append(symbol_latest_period)
-
-        # TODO: Process the latest period data
 
         self._result_queue.put(
             ResultInstance(
@@ -60,7 +62,3 @@ class SymbolWorker:
                 None  # TODO
             )
         )
-
-        # print(self._symbol)
-        # print(symbol_latest_period)
-        # print()
