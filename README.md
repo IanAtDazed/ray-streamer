@@ -16,3 +16,8 @@ This solution employs multiprocessing with [ray.io](https://www.ray.io/) (becaus
 However, I struggled to find an existing [ray.io](https://www.ray.io/) solution for streaming that truly fitted my needs. The closest I could find was: [Serve a Chatbot with Request and Response Streaming](https://docs.ray.io/en/latest/serve/tutorials/streaming.html), but a chatbot seems very different to data that might require significant processing before an application can move onto the next API call.
 
 So... This is a *solution* (Let me know if you do or don't agree!)
+
+## High-Level Overview
+- Streaming takes place on it's own process, and dumps the raw results onto a ray [Queue](ray.util.queue.Queue).
+  - The streamer is not waiting for current transformations, analysis, etc. to complete until it can make the next API call.
+  - The 3rd party API is not having to wait for an extended period of time for the next API call, so it *hopefully* won't time out your connection.
