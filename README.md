@@ -1,6 +1,6 @@
 # ray-streamer: Multiprocess data from a streaming API with ray.io
 
-## Purpose
+## The Problem
 Imagine you need to stream rapidly changing data from a 3rd party API.
 
 This could be many scenarios, but this example has been created with intraday stock market data in mind: For each stock symbol you subscribe to, you might receive latest period price data (OHLCV), Level1, Level2, Time and Sales, News, etc.
@@ -9,3 +9,8 @@ The more data you are getting with each call, and the faster the API churns it o
 
 - Each collection of data will be processed, in turn, resulting in any transformations / analysis being potentially slower than if you could spread that processing out to multiple workers across multiple processors.
 - It's likely that your application won't be making the next call to a 3rd party API until all latest transformations / analysis is complete. This can easily result in the server timing out your connection. That's bad! Especially for something like a trading app.
+
+## This Solution
+This solution employs multiprocessing with [ray.io](https://www.ray.io/).
+
+However, I struggled to find an existing [ray.io](https://www.ray.io/) solution for streaming that truly fitted my needs. The closest I could find was: [Serve a Chatbot with Request and Response Streaming](https://docs.ray.io/en/latest/serve/tutorials/streaming.html), but a chatbot seems very different to data that might require significant processing before an application can move onto the next API call.
