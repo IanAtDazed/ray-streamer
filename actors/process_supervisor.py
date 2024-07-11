@@ -48,5 +48,5 @@ class ProcessSupervisor:
         while self._is_processing:
             data = self._stream_queue.get()
 
-            print(data)
-            print()
+            for symbol_worker in self._symbol_workers.values():
+                symbol_worker.process_latest_period(data)
