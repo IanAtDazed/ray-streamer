@@ -23,13 +23,14 @@ class StreamSupervisor:
     def __init__(
         self,
         stream_queue: Queue,
-        result_queue: Queue
+        result_queue: Queue,
+        stream_symbols: tuple
     ) -> None:
 
         self._stream_queue = stream_queue
         self._result_queue = result_queue
 
-        self._streamer = Streamer.remote()
+        self._streamer = Streamer.remote(stream_symbols)
         self._is_streaming = True
 
         self._stream()
