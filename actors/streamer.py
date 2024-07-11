@@ -26,6 +26,7 @@ class Streamer:
         - Because this is a fake API, the symbols' data it returns
           is predefined.
         - Typically, you would subscribe to the symbols in *stream_symbols*.
+        - The *_period_number* attribute would not be required.
         """
 
         self._period_number = 0
