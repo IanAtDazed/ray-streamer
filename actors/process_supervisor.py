@@ -36,7 +36,7 @@ class ProcessSupervisor:
         """
 
         self._symbol_workers = {
-            symbol: SymbolWorker(symbol, self._result_queue)
+            symbol: SymbolWorker.remote(symbol, self._result_queue)
             for symbol in stream_symbols
         }
     
@@ -46,5 +46,5 @@ class ProcessSupervisor:
         while self._is_processing:
             data = self._stream_queue.get()
 
-            for symbol_worker in self._symbol_workers.values():
-                symbol_worker.process_latest_period(data)
+            ray.get([symbol_worker.process_latest_period.remote(data)
+                for symbol_worker in self._symbol_workers.values()])
