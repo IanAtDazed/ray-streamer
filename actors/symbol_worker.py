@@ -4,7 +4,7 @@ class SymbolWorker:
     """Class responsible for *processing* a specific streamed data symbol.
     
     **NOTE:** Typically, you would persist the data, here, but since this
-    is a toy example, we are going to discard it, once it is processed.
+    is a toy example, we are going allow it to be discarded, once it is processed.
     """
 
     def __init__(self, symbol: str) -> None:
@@ -16,11 +16,13 @@ class SymbolWorker:
 
         self._symbol = symbol
     
-    def process_latest_period(self, msg: dict) -> None:
+    def process_latest_period(self, latest_period: dict) -> None:
         """Process the latest streamed period data.
 
         Args:
-            msg: The message to process.
+            latest_period: The latest period to process.
         """
 
-        pass # TODO
+        print(self._symbol)
+        print(latest_period)
+        print()
