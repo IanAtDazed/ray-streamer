@@ -6,8 +6,9 @@ from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     from ray.util.queue import Queue
 
+from abc import ABC
 
-class _BaseSupervisor:
+class _BaseSupervisor(ABC):
     """Base supervisor class."""
 
     def __init__(
