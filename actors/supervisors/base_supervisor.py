@@ -8,6 +8,7 @@ if TYPE_CHECKING:
 
 from abc import ABC
 
+
 class _BaseSupervisor(ABC):
     """Base supervisor class."""
 
@@ -26,3 +27,4 @@ class _BaseSupervisor(ABC):
 
         self._stream_queue = stream_queue
         self._result_queue = result_queue
+        self._is_processing = True

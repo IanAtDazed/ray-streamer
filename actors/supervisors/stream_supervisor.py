@@ -32,14 +32,13 @@ class StreamSupervisor(_BaseSupervisor):
         super().__init__(stream_queue, result_queue)
 
         self._streamer = Streamer.remote(stream_symbols)
-        self._is_streaming = True
 
         self._stream()
 
     def _stream(self) -> None:
         """Start the streaming process."""
 
-        while self._is_streaming:
+        while self._is_processing:
             self._fetch_from_api()
 
     def _fetch_from_api(self) -> None:
@@ -56,7 +55,7 @@ class StreamSupervisor(_BaseSupervisor):
                 self._streamer.get_latest_period_data.remote())
 
         except ray.exceptions.RayTaskError as e:
-            self._is_streaming = False
+            self._is_processing = False
             error = e.args[0]
 
             self._result_queue.put(ErrorInstance(type(error), str(error)))

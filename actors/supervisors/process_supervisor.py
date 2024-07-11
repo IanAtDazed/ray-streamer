@@ -31,7 +31,6 @@ class ProcessSupervisor(_BaseSupervisor):
         super().__init__(stream_queue, result_queue)
 
         self._assign_symbol_workers(stream_symbols)
-        self._is_processing = True
         self._process_streamed_data()
 
     def _assign_symbol_workers(self, stream_symbols: tuple) -> None:
