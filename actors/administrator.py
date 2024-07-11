@@ -8,8 +8,8 @@ import sys
 import ray
 from ray.util.queue import Queue
 
-from actors.stream_supervisor import StreamSupervisor
-from actors.process_supervisor import ProcessSupervisor
+from actors.supervisors.stream_supervisor import StreamSupervisor
+from actors.supervisors.process_supervisor import ProcessSupervisor
 
 
 class Administrator:

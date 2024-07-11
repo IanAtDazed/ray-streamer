@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 
 import ray
 
-from actors.base_supervisor import _BaseSupervisor
+from actors.supervisors.base_supervisor import _BaseSupervisor
 from actors.streamer import Streamer
 from actors.helpers.named_tuples import ErrorInstance
 
