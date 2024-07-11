@@ -23,15 +23,16 @@ class Administrator:
             stream_symbols: The symbols to stream.
         """
 
+        # TODO: Inherit
         self._stream_queue = Queue()
         self._result_queue = Queue()
+        self._is_processing = True
 
         self._process_supervisor = ProcessSupervisor.remote(
             self._stream_queue, self._result_queue, stream_symbols)
         self._stream_supervisor = StreamSupervisor.remote(
             self._stream_queue, self._result_queue, stream_symbols)
 
-        self._is_processing = True
         self._process_results()
 
     def _process_results(self) -> None:
