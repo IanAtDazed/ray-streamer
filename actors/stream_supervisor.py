@@ -56,9 +56,9 @@ class StreamSupervisor:
         
         except ray.exceptions.RayTaskError as e:
             self._is_streaming = False
-            error_type = type(e.args[0])
+            error = e.args[0]
 
-            self._result_queue.put(ErrorInstance(error_type))
+            self._result_queue.put(ErrorInstance(type(error), str(error)))
 
         else:
             self._stream_queue.put(latest_period_ohlcv)

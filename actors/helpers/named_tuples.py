@@ -11,6 +11,7 @@ class ErrorInstance(NamedTuple):
     """NamedTuple class for returning *error* details."""
 
     error: Exception
+    message: str
 
 
 class ResultInstance(NamedTuple):
