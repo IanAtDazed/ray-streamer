@@ -8,6 +8,7 @@ if TYPE_CHECKING:
 
 import ray
 
+from helpers.datetime_helpers import convert_unix_timestamp_to_new_york_datetime
 from actors.helpers.named_tuples import ResultInstance
 
 
@@ -50,6 +51,21 @@ class SymbolWorker:
 
         self._repository.append(symbol_latest_period)
 
+        self._put_result(symbol_latest_period)
+
+    def _put_result(self, symbol_latest_period: dict) -> None:
+        """Put the result on the *_result_queue*.
+        
+        Args:
+            symbol_latest_period: The latest period to put on the queue.
+        
+        **NOTE:** This method handles *None* values, gracefully, but IRL, a *None*
+        for any of these intraday stock price attributes would likely indicate issues
+        with the API's data, that should not be ignored.
+        """
+
+        unix_ts = symbol_latest_period.get('datetime')
+
         self._result_queue.put(
             ResultInstance(
                 self._symbol,
@@ -58,7 +74,7 @@ class SymbolWorker:
                 symbol_latest_period.get('low'),
                 symbol_latest_period.get('close'),
                 symbol_latest_period.get('volume'),
-                symbol_latest_period.get('datetime'),
-                None  # TODO
+                unix_ts,
+                convert_unix_timestamp_to_new_york_datetime(unix_ts) if unix_ts else None
             )
         )
