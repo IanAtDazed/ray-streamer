@@ -24,7 +24,7 @@ So... This is my *solution*. (Let me know if you do or don't agree to the *solut
 ## High-Level Overview
 This is basically what things look like when it is running:
 ![High Level Activity Diagram](images/high_level_activity.png)
-- Streaming takes place, on it's own process, and dumps the raw results onto a Ray *processing* [Queue](ray.util.queue.Queue).
+- Streaming takes place, on it's own process, and dumps the raw results onto a Ray *processing* [Queue](https://docs.ray.io/en/latest/ray-core/api/doc/ray.util.queue.Queue.html).
   - The streamer is not waiting for current transformations, analysis, etc. to complete before it can make the next API call.
   - The 3rd party API is not having to wait for an extended period for the next API call, so it *hopefully* won't time out the connection. (Nothing is ever certain with a 3rd party!)
   - It will carry on grabbing data, regardless of whatever else your application is doing.
