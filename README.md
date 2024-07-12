@@ -1,5 +1,7 @@
 # ray-streamer: Parallel processing data from a streaming API with Ray
 
+I created this concept application to *hopefully* help others and to garner constructive feedback on how it might be improved.
+
 ## The Problem
 Imagine you need to stream rapidly changing data from a 3rd party API.
 
@@ -42,3 +44,20 @@ This is basically what things look like when it is running:
 - However, supposing data is coming in for: OHLCV, Level1, Level2, Time and Sales, News, etc.?
 - In such a case, *SymbolWorker* could be composed of classes to specifically hold each data-type's state and to perform specific processing upon it, e.g.:
 ![SymbolWorker Composite Class Diagram](images/symbol_worker_composite_class.png)
+
+Imagine data comes in looking something like this:
+'''
+{
+  'timestamp:': 1665427314480,
+  'service': 'TIMESALE',
+  'symbols': {
+    'AAPL': {..}
+    'TSLA': {..}
+}
+'''
+
+*SymbolWorker* could easily be adapted to process it with the appropriate composite object.
+
+### General
+- This is very much a proof of concept, that would need to be amended for specific requirements.
+- I am sure there are many ways to improve it - please let me know if you can suggest some! :smiley:
