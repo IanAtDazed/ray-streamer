@@ -77,7 +77,7 @@ ResultInstance(symbol='AMZN', open=199.8, high=199.8, low=199.8, close=199.8, vo
 ```
 
 ### Points to Consider
-1. Results will *not* always be returned in exactly the same order.
+1. Results will **not** always be returned in exactly the same order.
    - If data for *AMZN* & *AAPL* comes in on the same stream message, the respective items will be dealt with by the *AMZN* & *AAPL* *SymbolWorker* objects in parallel, but sometimes one will finish before the other.
    - Bear this in mind for testing! (I intend to put a testing repo up sometime in the future.)
 2. The *ErrorInstance*: *ConnectionError* is simulated when the application runs out of *fake* data - it's meant to happen!
