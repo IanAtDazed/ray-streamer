@@ -69,7 +69,7 @@
                 <mxCell id="15" value="Receive &amp;amp; Return Latest Data" style="rounded=1;whiteSpace=wrap;html=1;" parent="4" vertex="1">
                     <mxGeometry x="40" y="130" width="120" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="21" value="" style="shape=flexArrow;endArrow=classic;html=1;fillColor=#3333FF;strokeColor=#F0F0F0;" parent="4" edge="1">
+                <mxCell id="21" value="" style="shape=flexArrow;endArrow=classic;html=1;fillColor=#2424B3;strokeColor=#F0F0F0;" parent="4" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="-30" y="250" as="sourcePoint"/>
                         <mxPoint x="310" y="250" as="targetPoint"/>
