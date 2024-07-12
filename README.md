@@ -25,7 +25,7 @@ So... This is my *solution*. (Let me know if you do or don't agree to the *solut
 ## High-Level Overview
 This is basically how things look when it is running:
 ![High Level Activity Diagram](images/high_level_activity.png)
-- Streaming takes place, on it's own process, and puts the raw results onto a Ray *processing* [Queue](https://docs.ray.io/en/latest/ray-core/api/doc/ray.util.queue.Queue.html).
+- Streaming takes place, on its own process, and puts the raw results onto a Ray *processing* [Queue](https://docs.ray.io/en/latest/ray-core/api/doc/ray.util.queue.Queue.html).
   - The streamer is not waiting for current transformations, analysis, etc. to complete before it can make the next API call.
   - The 3rd party API is not having to wait for an extended period for the next API call, so it *hopefully* won't time out the connection. (Nothing is ever certain with a 3rd party!)
   - It should basically carry on grabbing data, regardless of whatever else your application is doing.
@@ -41,8 +41,8 @@ This is basically how things look when it is running:
 
 ## Potential Enhancements
 ### *Worker* (*SymbolWorker*)
-- In the code example, it simply grabs some intraday stock price data, from a *fake* streamer, and peforms minimal processing of it directly in the appropriate *SymbolWorker* objects.
-- However, supposing data is coming in for: OHLCV, Level1, Level2, Time and Sales, News, etc.?
+- In the code example, it simply grabs some intraday stock price data, from a *fake* streamer, and performs minimal processing of it directly in the appropriate *SymbolWorker* objects.
+- However, suppose data is coming in for: OHLCV, Level1, Level2, Time and Sales, News, etc.?
 - In such a case, *SymbolWorker* could be composed of classes to specifically hold each data-type's state and to perform specific processing upon it, e.g.:
 ![SymbolWorker Composite Class Diagram](images/symbol_worker_composite_class.png)
 
@@ -61,9 +61,9 @@ Imagine data comes in looking something like this:
 - **Note:** Because these classes are *owned* by the *SymbolWorker* actor, there would probably be no practical reason to make them [Ray](https://www.ray.io/) actors (i.e. you would not decorate them with ```@ray.remote```)
 
 ### General
-- In a *real* application, you will probably want to add the facility to add an remove subscriptions (in this case stock symbols), while the process is already running.
+- In a *real* application, you will probably want to add the facility to add and remove subscriptions (in this case stock symbols), while the process is already running.
 - The methods to start and stop streaming / processing will need to be tailored for the way in which you call it from your application.
-- There are notes throughout the docstrings that further describe how the code might be adapted to specfic needs.
+- There are notes throughout the docstrings that further describe how the code might be adapted to specific needs.
 
 ## Results Output
 When the application is run, it currently outputs to the console *similar* to the following:
@@ -87,5 +87,5 @@ ResultInstance(symbol='AMZN', open=199.8, high=199.8, low=199.8, close=199.8, vo
 2. The *ErrorInstance*: *ConnectionError* is simulated when the application runs out of *fake* data - it's meant to happen!
 
 ## Conclusion
-- This is very much a proof of concept, that would need to be amended for specific requirements.
-- I am sure there are many ways to improve it and its documentation - please let me know if you can suggest some! :smiley:
+- This is very much a proof of concept that would need to be amended for specific requirements.
+- I am sure there are many ways to improve it and its documentation. Please let me know if you can suggest some! :smiley:
