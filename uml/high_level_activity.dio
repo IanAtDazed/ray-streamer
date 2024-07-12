@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="RAs4SvAo-ulhIKiZPfPh" name="Page-1">
-        <mxGraphModel dx="1094" dy="490" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2339" pageHeight="3300" math="0" shadow="0">
+        <mxGraphModel dx="959" dy="490" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2339" pageHeight="3300" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -71,7 +71,7 @@
                 <mxCell id="41" value="Results Queue" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="4" vertex="1">
                     <mxGeometry x="50" y="780" width="110" height="20" as="geometry"/>
                 </mxCell>
-                <mxCell id="40" value="" style="shape=flexArrow;endArrow=classic;html=1;fillColor=#B3FF66;strokeColor=#F0F0F0;" parent="4" edge="1">
+                <mxCell id="40" value="" style="shape=flexArrow;endArrow=classic;html=1;fillColor=#009900;strokeColor=#F0F0F0;" parent="4" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="510" y="770" as="sourcePoint"/>
                         <mxPoint x="-310" y="770" as="targetPoint"/>
