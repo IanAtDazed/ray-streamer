@@ -32,7 +32,7 @@ This is basically how things look when it is running:
   - In this example, a *label* is a stock symbol, and a *Worker* is created for each symbol that has been subscribed to.
   - The *Worker* processes each latest period (OHLCV) as it receives that data.
   - **Note:** The latest data is actually sent to *all* the *Workers*, but they simply ignore data that is not for them.
-    - This should typically be faster than deciding which *Worker* specific data should be sent to.
+    - This should typically be faster than having *ProcessSupervisor* determining which *Worker* specific data should be sent to.
 - Once the *Worker* has completed its transformation / analysis / whatever clever stuff you want to do, it puts its latest result onto a *results* queue.
 - An *Administrator* object fetches the latest result from the *results* queue in order to do whatever is required with it, after that.
   - In this case, it simply prints it to the console.
