@@ -18,6 +18,7 @@ However, I struggled to find an existing [Ray](https://www.ray.io/) solution for
 So... This is my *solution*. (Let me know if you do or don't agree!)
 
 ## High-Level Overview
+![alt text](images/high_level_activity.png)
 - Streaming takes place, on it's own process, and dumps the raw results onto a Ray *processing* [Queue](ray.util.queue.Queue).
   - The streamer is not waiting for current transformations, analysis, etc. to complete before it can make the next API call.
   - The 3rd party API is not having to wait for an extended period for the next API call, so it *hopefully* won't time out the connection. (Nothing is ever certain with a 3rd party!)
