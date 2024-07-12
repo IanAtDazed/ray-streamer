@@ -47,7 +47,7 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="62" value="&lt;span style=&quot;color: rgba(0, 0, 0, 0.9); font-family: -apple-system, system-ui, BlinkMacSystemFont, &amp;quot;Segoe UI&amp;quot;, Roboto, &amp;quot;Helvetica Neue&amp;quot;, &amp;quot;Fira Sans&amp;quot;, Ubuntu, Oxygen, &amp;quot;Oxygen Sans&amp;quot;, Cantarell, &amp;quot;Droid Sans&amp;quot;, &amp;quot;Apple Color Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Symbol&amp;quot;, &amp;quot;Lucida Grande&amp;quot;, Helvetica, Arial, sans-serif; font-size: 14px; background-color: rgb(255, 255, 255);&quot;&gt;•&lt;/span&gt;&lt;font color=&quot;#000000&quot;&gt;&amp;nbsp;Currently, it prints to the console.&lt;br&gt;&lt;/font&gt;&lt;span style=&quot;color: rgba(0, 0, 0, 0.9); font-family: -apple-system, system-ui, BlinkMacSystemFont, &amp;quot;Segoe UI&amp;quot;, Roboto, &amp;quot;Helvetica Neue&amp;quot;, &amp;quot;Fira Sans&amp;quot;, Ubuntu, Oxygen, &amp;quot;Oxygen Sans&amp;quot;, Cantarell, &amp;quot;Droid Sans&amp;quot;, &amp;quot;Apple Color Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Symbol&amp;quot;, &amp;quot;Lucida Grande&amp;quot;, Helvetica, Arial, sans-serif; font-size: 14px; background-color: rgb(255, 255, 255);&quot;&gt;•&lt;/span&gt;&lt;font color=&quot;#000000&quot;&gt;&amp;nbsp;You may want it to pass it to a callback&lt;br&gt;&amp;nbsp; function of your GUI, etc.&lt;/font&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#faebd7;align=left;" vertex="1" parent="3">
+                <mxCell id="62" value="&lt;span style=&quot;color: rgba(0, 0, 0, 0.9); font-family: -apple-system, system-ui, BlinkMacSystemFont, &amp;quot;Segoe UI&amp;quot;, Roboto, &amp;quot;Helvetica Neue&amp;quot;, &amp;quot;Fira Sans&amp;quot;, Ubuntu, Oxygen, &amp;quot;Oxygen Sans&amp;quot;, Cantarell, &amp;quot;Droid Sans&amp;quot;, &amp;quot;Apple Color Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Symbol&amp;quot;, &amp;quot;Lucida Grande&amp;quot;, Helvetica, Arial, sans-serif; font-size: 14px; background-color: rgb(255, 255, 255);&quot;&gt;•&lt;/span&gt;&lt;font color=&quot;#000000&quot;&gt;&amp;nbsp;Currently, it prints to the console.&lt;br&gt;&lt;/font&gt;&lt;span style=&quot;color: rgba(0, 0, 0, 0.9); font-family: -apple-system, system-ui, BlinkMacSystemFont, &amp;quot;Segoe UI&amp;quot;, Roboto, &amp;quot;Helvetica Neue&amp;quot;, &amp;quot;Fira Sans&amp;quot;, Ubuntu, Oxygen, &amp;quot;Oxygen Sans&amp;quot;, Cantarell, &amp;quot;Droid Sans&amp;quot;, &amp;quot;Apple Color Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Symbol&amp;quot;, &amp;quot;Lucida Grande&amp;quot;, Helvetica, Arial, sans-serif; font-size: 14px; background-color: rgb(255, 255, 255);&quot;&gt;•&lt;/span&gt;&lt;font color=&quot;#000000&quot;&gt;&amp;nbsp;You may want it to pass it to a callback&lt;br&gt;&amp;nbsp; function of your GUI, etc.&lt;/font&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#faebd7;align=left;" parent="3" vertex="1">
                     <mxGeometry x="-20" y="890" width="250" height="80" as="geometry"/>
                 </mxCell>
                 <mxCell id="4" value="Streamer" style="swimlane;whiteSpace=wrap;html=1;startSize=23;" parent="1" vertex="1">
@@ -71,7 +71,7 @@
                 <mxCell id="41" value="Results Queue" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="4" vertex="1">
                     <mxGeometry x="50" y="780" width="110" height="20" as="geometry"/>
                 </mxCell>
-                <mxCell id="40" value="" style="shape=flexArrow;endArrow=classic;html=1;fillColor=#009900;strokeColor=#F0F0F0;" parent="4" edge="1">
+                <mxCell id="40" value="" style="shape=flexArrow;endArrow=classic;html=1;fillColor=#1A3300;strokeColor=#F0F0F0;" parent="4" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="510" y="770" as="sourcePoint"/>
                         <mxPoint x="-310" y="770" as="targetPoint"/>
@@ -120,25 +120,25 @@
                         <mxPoint x="-30" y="510" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="55" value="" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="6">
+                <mxCell id="55" value="" style="rhombus;whiteSpace=wrap;html=1;" parent="6" vertex="1">
                     <mxGeometry x="85" y="530" width="30" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="56" value="Has data?" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="6">
+                <mxCell id="56" value="Has data?" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="6" vertex="1">
                     <mxGeometry x="25" y="510" width="60" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="57" value="" style="endArrow=classic;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="6" source="27" target="55">
+                <mxCell id="57" value="" style="endArrow=classic;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="6" source="27" target="55" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="130" y="590" as="sourcePoint"/>
                         <mxPoint x="180" y="540" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="59" value="" style="endArrow=classic;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="6" source="55" target="31">
+                <mxCell id="59" value="" style="endArrow=classic;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="6" source="55" target="31" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="120" y="610" as="sourcePoint"/>
                         <mxPoint x="170" y="560" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="60" value="Yes" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="6">
+                <mxCell id="60" value="Yes" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="6" vertex="1">
                     <mxGeometry x="90" y="560" width="60" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="8" value="3rd Party API" style="swimlane;whiteSpace=wrap;html=1;startSize=23;fillColor=#FF9999;" parent="1" vertex="1">
@@ -189,13 +189,13 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="63" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;fontColor=#000000;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="45" target="62">
+                <mxCell id="63" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;fontColor=#000000;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="45" target="62" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="110" y="1250" as="sourcePoint"/>
                         <mxPoint x="160" y="1200" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="64" value="&lt;font color=&quot;#000000&quot; face=&quot;-apple-system, system-ui, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Fira Sans, Ubuntu, Oxygen, Oxygen Sans, Cantarell, Droid Sans, Apple Color Emoji, Segoe UI Emoji, Segoe UI Emoji, Segoe UI Symbol, Lucida Grande, Helvetica, Arial, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 14px; background-color: rgb(250, 235, 215);&quot;&gt;There is a 1..* count of SymbolWorkers&lt;/span&gt;&lt;/font&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#faebd7;align=left;" vertex="1" parent="1">
+                <mxCell id="64" value="&lt;font color=&quot;#000000&quot; face=&quot;-apple-system, system-ui, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Fira Sans, Ubuntu, Oxygen, Oxygen Sans, Cantarell, Droid Sans, Apple Color Emoji, Segoe UI Emoji, Segoe UI Emoji, Segoe UI Symbol, Lucida Grande, Helvetica, Arial, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 14px; background-color: rgb(250, 235, 215);&quot;&gt;There is a 1..* count of SymbolWorkers&lt;/span&gt;&lt;/font&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#faebd7;align=left;" parent="1" vertex="1">
                     <mxGeometry x="860" y="10" width="160" height="90" as="geometry"/>
                 </mxCell>
             </root>
