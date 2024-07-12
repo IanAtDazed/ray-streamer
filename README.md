@@ -21,7 +21,7 @@ So... This is my *solution*. (Let me know if you do or don't agree to the *solut
 
 ## High-Level Overview
 This is basically what things look like when it is running:
-![alt text](images/high_level_activity.png)
+![High Level Activity Diagram](images/high_level_activity.png)
 - Streaming takes place, on it's own process, and dumps the raw results onto a Ray *processing* [Queue](ray.util.queue.Queue).
   - The streamer is not waiting for current transformations, analysis, etc. to complete before it can make the next API call.
   - The 3rd party API is not having to wait for an extended period for the next API call, so it *hopefully* won't time out the connection. (Nothing is ever certain with a 3rd party!)
@@ -35,3 +35,10 @@ This is basically what things look like when it is running:
 - An *Administrator* object fetches the latest result from the *results* queue in order to do whatever is required with it, after that.
   - In this case, it simply prints it to the console.
   - In other scenarios, it might hand it to a callback function of a single-threaded GUI, etc. (I intend to create a simple repo that demonstartes this with PyQt6, sometime in the future.)
+
+## Potential Enhancements
+### *Worker* (*SymbolWorker*)
+- In the code example, it simply grabs some intraday stock price data, from a fake streamer, and peforms minimal processing of it directly in the *SymbolWorker* object.
+- However, supposing data is coming in for: period price data (OHLCV), Level1, Level2, Time and Sales, News, etc.?
+- In such a case, *SymbolWorker* could be composed of classes to specifically hold each data-type's state and to perform specific processing upon it, e.g.:
+![SymbolWorker Composite Class Diagram](images/symbol_worker_composite_class.png)

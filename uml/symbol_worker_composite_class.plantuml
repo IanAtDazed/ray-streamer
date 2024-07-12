@@ -1,0 +1,18 @@
+@startuml SymbolWorkd Composite Class Diagram
+
+class SymbolWorker
+class OHLCV1Min
+class OHLCV5Min
+class Level1
+class Level2
+class TimeAndSales
+class News
+
+SymbolWorker "1" --> "1" OHLCV1Min
+SymbolWorker "1" --> "1" OHLCV5Min
+SymbolWorker "1" --> "1" Level1
+SymbolWorker "1" --> "1" Level2
+SymbolWorker "1" --> "1" TimeAndSales
+SymbolWorker "1" --> "1" News
+
+@enduml
