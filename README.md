@@ -10,14 +10,14 @@ The more data you are getting, with each call, and the faster the API churns it 
 The main problems being:
 
 - Each collection of data will be processed, in turn, resulting in any transformations / analysis being potentially slower than if you could spread that processing out to multiple *Worker*s across multiple processors.
-- It's likely that your application won't be making the next call to a 3rd party API until all latest transformations / analysis is complete. This can easily result in the server timing out your connection. That's bad! Especially for something like a trading app.
+- It's likely that your application won't be making the next call to the 3rd party API until all latest transformations / analysis is complete. This can easily result in the server timing out your connection. That's bad! Especially for something like a trading app.
 
 ## This Solution
-This solution employs multiprocessing with [Ray](https://www.ray.io/) (because I find it easier to work with than the Python [multiprocessing](https://docs.python.org/3/library/multiprocessing.html), and it is apparently faster. :smiley:)
+This solution employs multiprocessing with [Ray](https://www.ray.io/) (which I find easier to work with than the Python [multiprocessing](https://docs.python.org/3/library/multiprocessing.html), and it is apparently [faster](https://towardsdatascience.com/10x-faster-parallel-python-without-python-multiprocessing-e5017c93cce1).)
 
 However, I struggled to find an existing [Ray](https://www.ray.io/) solution for streaming that truly fitted my needs. The closest I could find was: [Serve a Chatbot with Request and Response Streaming](https://docs.ray.io/en/latest/serve/tutorials/streaming.html), but a chatbot seems very different to data that might require significant processing before an application can move onto the next API call.
 
-So... This is my *solution*. (Let me know if you do or don't agree!)
+So... This is my *solution*. (Let me know if you do or don't agree to the *solution* part! :smiley:)
 
 ## High-Level Overview
 ![alt text](images/high_level_activity.png)
