@@ -36,7 +36,7 @@ This is basically how things look when it is running:
 - Once the *Worker* has completed its transformation / analysis / whatever clever stuff you want to do, it puts its latest result onto a *results* queue.
 - An *Administrator* object fetches the latest result from the *results* queue in order to do whatever is required with it, after that.
   - In this case, it simply prints it to the console.
-  - In other scenarios, it might hand it to a callback function of a single-threaded GUI, etc. (I intend to create a simple repo that demonstartes this with PyQt6, sometime in the future.)
+  - In other scenarios, it might hand it to a callback function of a GUI, etc. (I intend to create a simple repo that demonstrates this (somewhat tricky scenario) with [PyQt6](https://doc.qt.io/qtforpython-6/) and [QThread](https://doc.qt.io/qt-6/qthread.html), sometime in the future.)
 
 ## Potential Enhancements
 ### *Worker* (*SymbolWorker*)
