@@ -19,6 +19,16 @@
                         <mxPoint x="340" y="780" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
+                <mxCell id="65" value="" style="endArrow=classic;html=1;fillColor=#1A3300;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="2" source="45" target="43">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="-30" y="920" as="sourcePoint"/>
+                        <mxPoint x="20" y="870" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="20" y="930"/>
+                            <mxPoint x="20" y="830"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
                 <mxCell id="3" value="StreamSupervisor" style="swimlane;whiteSpace=wrap;html=1;startSize=23;" parent="1" vertex="1">
                     <mxGeometry x="240" y="110" width="200" height="1000" as="geometry"/>
                 </mxCell>
