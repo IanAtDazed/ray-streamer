@@ -50,7 +50,7 @@ class StreamSupervisor(_BaseSupervisor):
         """
 
         try:
-            latest_period_ohlcv = ray.get(
+            latest_data = ray.get(
                 self._streamer.get_latest_data.remote())
 
         except ray.exceptions.RayTaskError as e:
@@ -60,4 +60,4 @@ class StreamSupervisor(_BaseSupervisor):
             self._result_queue.put(ErrorInstance(type(error), str(error)))
 
         else:
-            self._processing_queue.put(latest_period_ohlcv)
+            self._processing_queue.put(latest_data)
