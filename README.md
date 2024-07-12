@@ -1,6 +1,6 @@
 # ray-streamer: Parallel processing data from a streaming API with Ray
 
-I created this concept application to *hopefully* help others and to garner constructive feedback on how it might be improved.
+I created this concept application to *hopefully* help others and to garner constructive feedback as to how it might be improved.
 
 ## The Problem
 Imagine you need to stream rapidly changing data from a 3rd party API.
