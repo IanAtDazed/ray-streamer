@@ -27,7 +27,7 @@ This is basically how things look when it is running:
 - Streaming takes place, on it's own process, and puts the raw results onto a Ray *processing* [Queue](https://docs.ray.io/en/latest/ray-core/api/doc/ray.util.queue.Queue.html).
   - The streamer is not waiting for current transformations, analysis, etc. to complete before it can make the next API call.
   - The 3rd party API is not having to wait for an extended period for the next API call, so it *hopefully* won't time out the connection. (Nothing is ever certain with a 3rd party!)
-  - It will carry on grabbing data, regardless of whatever else your application is doing.
+  - It should basically carry on grabbing data, regardless of whatever else your application is doing.
 - The latest streamed data (in this example, 1 minute OHLCV data only) is grabbed from the *processing* queue and sent to individual *Worker* objects that are created to deal with data belonging to specific *labels*.
   - In this example, a *label* is a stock symbol, and a *Worker* is created for each symbol that has been subscribed to.
   - The *Worker* processes each latest period (OHLCV) as it receives that data.
