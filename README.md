@@ -20,6 +20,7 @@ However, I struggled to find an existing [Ray](https://www.ray.io/) solution for
 So... This is my *solution*. (Let me know if you do or don't agree to the *solution* part! :smiley:)
 
 ## High-Level Overview
+This is basically what things look like when it is running:
 ![alt text](images/high_level_activity.png)
 - Streaming takes place, on it's own process, and dumps the raw results onto a Ray *processing* [Queue](ray.util.queue.Queue).
   - The streamer is not waiting for current transformations, analysis, etc. to complete before it can make the next API call.
