@@ -10,7 +10,7 @@ The more data you are getting, with each call, and the faster the API churns it 
 The main problems being:
 
 - Each collection of data will be processed, in turn, resulting in any transformations / analysis being potentially slower than if you could spread that processing out to multiple *Worker*s across multiple processors.
-- It's likely that your application won't be making the next call to the 3rd party API until all latest transformations / analysis is complete. This can easily result in the server timing out your connection. That's bad! Especially for something like a trading app.
+- It's likely that your application won't be making the next call to the 3rd party API until all the latest transformations / analysis is complete. This can easily result in the server timing out your connection. That's bad! Especially for something like a trading app.
 
 ## This Solution
 This solution employs multiprocessing with [Ray](https://www.ray.io/) (which I find easier to work with than the Python [multiprocessing](https://docs.python.org/3/library/multiprocessing.html), and it is apparently [faster](https://towardsdatascience.com/10x-faster-parallel-python-without-python-multiprocessing-e5017c93cce1).)
@@ -38,7 +38,7 @@ This is basically what things look like when it is running:
 
 ## Potential Enhancements
 ### *Worker* (*SymbolWorker*)
-- In the code example, it simply grabs some intraday stock price data, from a fake streamer, and peforms minimal processing of it directly in the *SymbolWorker* object.
-- However, supposing data is coming in for: period price data (OHLCV), Level1, Level2, Time and Sales, News, etc.?
+- In the code example, it simply grabs some intraday stock price data, from a *fake* streamer, and peforms minimal processing of it directly in the *SymbolWorker* object.
+- However, supposing data is coming in for: OHLCV, Level1, Level2, Time and Sales, News, etc.?
 - In such a case, *SymbolWorker* could be composed of classes to specifically hold each data-type's state and to perform specific processing upon it, e.g.:
 ![SymbolWorker Composite Class Diagram](images/symbol_worker_composite_class.png)
