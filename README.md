@@ -46,7 +46,7 @@ This is basically how things look when it is running:
 ![SymbolWorker Composite Class Diagram](images/symbol_worker_composite_class.png)
 
 Imagine data comes in looking something like this:
-'''
+```
 {
   'timestamp:': 1665427314480,
   'service': 'TIMESALE',
@@ -54,10 +54,31 @@ Imagine data comes in looking something like this:
     'AAPL': {..}
     'TSLA': {..}
 }
-'''
+```
 
-*SymbolWorker* could easily be adapted to process it with the appropriate composite object.
+- *SymbolWorker* could easily be adapted to process it with the appropriate composite object (*TimeAndSales* in this example.)
+- **Note:** Because these classes are *owned* by the *SymbolWorker* actor, there would probably be no practical reason to make them [Ray](https://www.ray.io/) actors (i.e. you would not decorate them with ```@ray.remote```)
 
 ### General
 - This is very much a proof of concept, that would need to be amended for specific requirements.
 - I am sure there are many ways to improve it - please let me know if you can suggest some! :smiley:
+
+## Current Output
+When the application is run, it currently outputs *similar* to the following:
+
+'''
+Running... Press Ctrl-C to stop.
+2024-07-12 07:15:11,795 INFO worker.py:1724 -- Started a local Ray instance.
+ResultInstance(symbol='AMZN', open=199.79, high=199.84, low=199.79, close=199.84, volume=1521, unix_ts=1720522800000, new_york_datetime=datetime.datetime(2024, 7, 9, 7, 0, tzinfo=zoneinfo.ZoneInfo(key='America/New_York')))
+ErrorInstance(error=<class 'ConnectionError'>, message='No more data available from API.')
+ResultInstance(symbol='AMZN', open=199.85, high=199.85, low=199.85, close=199.85, volume=204, unix_ts=1720522860000, new_york_datetime=datetime.datetime(2024, 7, 9, 7, 1, tzinfo=zoneinfo.ZoneInfo(key='America/New_York')))
+ResultInstance(symbol='AAPL', open=227.99, high=228.0, low=227.95, close=227.95, volume=3756, unix_ts=1720522860000, new_york_datetime=datetime.datetime(2024, 7, 9, 7, 1, tzinfo=zoneinfo.ZoneInfo(key='America/New_York')))
+ResultInstance(symbol='AAPL', open=227.8, high=227.8, low=227.8, close=227.8, volume=249, unix_ts=1720522920000, new_york_datetime=datetime.datetime(2024, 7, 9, 7, 2, tzinfo=zoneinfo.ZoneInfo(key='America/New_York')))
+ResultInstance(symbol='AMZN', open=199.8, high=199.8, low=199.8, close=199.8, volume=1874, unix_ts=1720522920000, new_york_datetime=datetime.datetime(2024, 7, 9, 7, 2, tzinfo=zoneinfo.ZoneInfo(key='America/New_York')))
+'''
+
+### Points of Interest
+1. Results will not always be returned in exactly the same order.
+   - If data for *AMZN* & *AAPL* comes in on the same stream message, the respective items will be dealt with by the *AMZN* & *AAPL* *SymbolWorker* objects in parallel, but sometimes one will finish before the other.
+   - Bear this in mind for testing!
+2. The *ErrorInstance*: *ConnectionError* is simulated when the application runs out of *fake* data.
