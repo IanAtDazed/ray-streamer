@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="RAs4SvAo-ulhIKiZPfPh" name="Page-1">
-        <mxGraphModel dx="959" dy="490" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2339" pageHeight="3300" math="0" shadow="0">
+        <mxGraphModel dx="660" dy="233" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2339" pageHeight="3300" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -113,7 +113,7 @@
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="6" value="SymbolWorker0..*" style="swimlane;whiteSpace=wrap;html=1;startSize=23;" parent="1" vertex="1">
-                    <mxGeometry x="840" y="110" width="200" height="1000" as="geometry"/>
+                    <mxGeometry x="840" y="110" width="320" height="1000" as="geometry"/>
                 </mxCell>
                 <mxCell id="27" value="Extract the data for this SymbolWorker's symbol" style="rounded=1;whiteSpace=wrap;html=1;" parent="6" vertex="1">
                     <mxGeometry x="40" y="430" width="120" height="60" as="geometry"/>
@@ -151,8 +151,20 @@
                 <mxCell id="60" value="Yes" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="6" vertex="1">
                     <mxGeometry x="90" y="560" width="60" height="30" as="geometry"/>
                 </mxCell>
+                <mxCell id="66" value="Do nothing" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="6">
+                    <mxGeometry x="160" y="515" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="70" value="" style="endArrow=classic;html=1;fillColor=#2424B3;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="6" source="55" target="66">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="210" y="500" as="sourcePoint"/>
+                        <mxPoint x="260" y="450" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="68" value="No" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="6">
+                    <mxGeometry x="115" y="520" width="30" height="20" as="geometry"/>
+                </mxCell>
                 <mxCell id="8" value="3rd Party API" style="swimlane;whiteSpace=wrap;html=1;startSize=23;fillColor=#FF9999;" parent="1" vertex="1">
-                    <mxGeometry x="1040" y="110" width="200" height="1000" as="geometry"/>
+                    <mxGeometry x="1160" y="110" width="200" height="1000" as="geometry"/>
                 </mxCell>
                 <mxCell id="12" value="Receive Request" style="rounded=1;whiteSpace=wrap;html=1;" parent="8" vertex="1">
                     <mxGeometry x="40" y="40" width="120" height="60" as="geometry"/>
@@ -206,7 +218,7 @@
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="64" value="&lt;font color=&quot;#000000&quot; face=&quot;-apple-system, system-ui, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Fira Sans, Ubuntu, Oxygen, Oxygen Sans, Cantarell, Droid Sans, Apple Color Emoji, Segoe UI Emoji, Segoe UI Emoji, Segoe UI Symbol, Lucida Grande, Helvetica, Arial, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 14px; background-color: rgb(250, 235, 215);&quot;&gt;There is a 1..* count of SymbolWorkers&lt;/span&gt;&lt;/font&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#faebd7;align=left;" parent="1" vertex="1">
-                    <mxGeometry x="860" width="160" height="100" as="geometry"/>
+                    <mxGeometry x="920" width="160" height="100" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>
