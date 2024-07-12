@@ -60,7 +60,8 @@ Imagine data comes in looking something like this:
 - **Note:** Because these classes are *owned* by the *SymbolWorker* actor, there would probably be no practical reason to make them [Ray](https://www.ray.io/) actors (i.e. you would not decorate them with ```@ray.remote```)
 
 ### General
-In a *real* application, you will probably want to add the facility to add an remove subscriptions (in this case stock symbols), while the process is already running.
+- In a *real* application, you will probably want to add the facility to add an remove subscriptions (in this case stock symbols), while the process is already running.
+- The methods to start and stop streaming / processing will need to be tailored for the way in which you call it from your application.
 
 ## Results Output
 When the application is run, it currently outputs to the console *similar* to the following:
