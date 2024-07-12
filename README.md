@@ -31,7 +31,7 @@ This is basically what things look like when it is running:
   - The *Worker* processes each latest period (OHLCV) as it receives that data.
   - **Note:** The latest data is actually sent to *all* the *Workers*, but they simply ignore data that is not for them.
     - This should typically be faster than deciding which *Worker* specific data should be sent to.
-- Once the *Worker* has completed its transformation / analysis / whatever clever stuff you want to add, it puts its latest result onto a *results* queue.
-- An *Administrator* object fetches the latest items from the *results* queue in order to do whatever is required with them, after that.
-  - In this case, it simply prints them to the console.
-  - In other scenarios, it might hand them to a callback function of a single-threaded GUI, etc. (I intend to create a simple repo that demonstartes this with PyQt6, sometime in the future.)
+- Once the *Worker* has completed its transformation / analysis / whatever clever stuff you want to do, it puts its latest result onto a *results* queue.
+- An *Administrator* object fetches the latest result from the *results* queue in order to do whatever is required with it, after that.
+  - In this case, it simply prints it to the console.
+  - In other scenarios, it might hand it to a callback function of a single-threaded GUI, etc. (I intend to create a simple repo that demonstartes this with PyQt6, sometime in the future.)
