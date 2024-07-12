@@ -31,20 +31,21 @@ class SymbolWorker:
         self._result_queue = result_queue
         self._repository = []
 
-    def process_latest_period(self, latest_period: dict) -> None:
-        """Process the latest streamed period data.
+    def process_latest_data(self, latest_data: dict) -> None:
+        """Process the latest streamed data.
 
         Args:
-            latest_period: The latest period to process.
+            latest_data: The latest period to process.
 
         **NOTE:**
         - Here, we are simply appending the latest data
           to our repository, and doing a little formatting, before
           putting it on *_result_queue*.
         - IRL, we would be doing something a little more interesting!
+          - See: [Worker (SymbolWorker)](https://github.com/IanAtDazed/ray-streamer?tab=readme-ov-file#worker-symbolworker)
         """
 
-        symbol_latest_period = latest_period.get(self._symbol)
+        symbol_latest_period = latest_data.get(self._symbol)
 
         if not symbol_latest_period:
             return

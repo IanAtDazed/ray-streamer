@@ -51,5 +51,5 @@ class ProcessSupervisor(_BaseSupervisor):
         while self._is_processing:
             data = self._processing_queue.get()
 
-            ray.get([symbol_worker.process_latest_period.remote(data)
+            ray.get([symbol_worker.process_latest_data.remote(data)
                      for symbol_worker in self._symbol_workers.values()])
