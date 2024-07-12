@@ -206,7 +206,7 @@
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="64" value="&lt;font color=&quot;#000000&quot; face=&quot;-apple-system, system-ui, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Fira Sans, Ubuntu, Oxygen, Oxygen Sans, Cantarell, Droid Sans, Apple Color Emoji, Segoe UI Emoji, Segoe UI Emoji, Segoe UI Symbol, Lucida Grande, Helvetica, Arial, sans-serif&quot;&gt;&lt;span style=&quot;font-size: 14px; background-color: rgb(250, 235, 215);&quot;&gt;There is a 1..* count of SymbolWorkers&lt;/span&gt;&lt;/font&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#faebd7;align=left;" parent="1" vertex="1">
-                    <mxGeometry x="860" y="10" width="160" height="90" as="geometry"/>
+                    <mxGeometry x="860" width="160" height="100" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>
