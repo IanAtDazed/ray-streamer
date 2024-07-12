@@ -59,7 +59,10 @@ Imagine data comes in looking something like this:
 - *SymbolWorker* could easily be adapted to process it with the appropriate composite object (*TimeAndSales* in this example.)
 - **Note:** Because these classes are *owned* by the *SymbolWorker* actor, there would probably be no practical reason to make them [Ray](https://www.ray.io/) actors (i.e. you would not decorate them with ```@ray.remote```)
 
-## Current Output
+### General
+In a *real* application, you will probably want to add the facility to add an remove subscriptions (in this case stock symbols), while the process is already running.
+
+## Results Output
 When the application is run, it currently outputs to the console *similar* to the following:
 
 '''
@@ -74,11 +77,11 @@ ResultInstance(symbol='AMZN', open=199.8, high=199.8, low=199.8, close=199.8, vo
 '''
 
 ### Points to Consider
-1. Results will not always be returned in exactly the same order.
+1. Results will *not* always be returned in exactly the same order.
    - If data for *AMZN* & *AAPL* comes in on the same stream message, the respective items will be dealt with by the *AMZN* & *AAPL* *SymbolWorker* objects in parallel, but sometimes one will finish before the other.
    - Bear this in mind for testing! (I intend to put a testing repo up sometime in the future.)
-2. The *ErrorInstance*: *ConnectionError* is simulated when the application runs out of *fake* data.
+2. The *ErrorInstance*: *ConnectionError* is simulated when the application runs out of *fake* data - it's meant to happen!
 
 ## Conclusion
 - This is very much a proof of concept, that would need to be amended for specific requirements.
-- I am sure there are many ways to improve it and the way it is documented - please let me know if you can suggest some! :smiley:
+- I am sure there are many ways to improve it and its documentation - please let me know if you can suggest some! :smiley:
