@@ -1,4 +1,4 @@
-# ray-streamer: Parallel Processing Data From a Streaming API With Ray
+# ray-streamer: Parallel Processing Data From a Streaming API With RAY
 
 ## Introduction
 I created this concept application to *hopefully* help others and to garner constructive feedback as to how it might be improved.
@@ -16,16 +16,16 @@ The main problems being:
 - It's likely that your application won't be making the next call to the 3rd party API until all the latest transformations / analysis is complete. This can easily result in the server timing out your connection. That's bad! Especially for something like a trading app.
 
 ## This Solution
-This solution employs multiprocessing with [Ray](https://www.ray.io/) (which I find easier to work with than the Python [multiprocessing](https://docs.python.org/3/library/multiprocessing.html) library, and it is apparently [faster](https://towardsdatascience.com/10x-faster-parallel-python-without-python-multiprocessing-e5017c93cce1).)
+This solution employs multiprocessing with [RAY](https://www.ray.io/) (which I find easier to work with than the Python [multiprocessing](https://docs.python.org/3/library/multiprocessing.html) library, and it is apparently [faster](https://towardsdatascience.com/10x-faster-parallel-python-without-python-multiprocessing-e5017c93cce1).)
 
-However, I struggled to find an existing [Ray](https://www.ray.io/) solution for streaming that truly fitted my needs. The closest I could find was: [Serve a Chatbot with Request and Response Streaming](https://docs.ray.io/en/latest/serve/tutorials/streaming.html), but a chatbot seems very different to data that might require significant processing before an application can move onto the next API call.
+However, I struggled to find an existing [RAY](https://www.ray.io/) solution for streaming that truly fitted my needs. The closest I could find was: [Serve a Chatbot with Request and Response Streaming](https://docs.ray.io/en/latest/serve/tutorials/streaming.html), but a chatbot seems very different to data that might require significant processing before an application can move onto the next API call.
 
 So... This is my *solution*. (Let me know if you do or don't agree to the *solution* part! :smiley:)
 
 ## High-Level Overview
 This is basically how things look when it is running:
 ![High Level Activity Diagram](images/high_level_activity.png)
-- Streaming takes place, on its own process, and puts the raw results onto a Ray *processing* [Queue](https://docs.ray.io/en/latest/ray-core/api/doc/ray.util.queue.Queue.html).
+- Streaming takes place, on its own process, and puts the raw results onto a RAY *processing* [Queue](https://docs.ray.io/en/latest/ray-core/api/doc/ray.util.queue.Queue.html).
   - The streamer is not waiting for current transformations, analysis, etc. to complete before it can make the next API call.
   - The 3rd party API is not having to wait for an extended period for the next API call, so it *hopefully* won't time out the connection. (Nothing is ever certain with a 3rd party!)
   - It should basically carry on grabbing data, regardless of whatever else your application is doing.
@@ -58,7 +58,7 @@ Imagine data comes in looking something like this:
 ```
 
 - *SymbolWorker* could easily be adapted to process it with the appropriate composite object (*TimeAndSales* in this example.)
-- **Note:** Because these classes are *owned* by the *SymbolWorker* actor, there would probably be no practical reason to make them [Ray](https://www.ray.io/) actors (i.e. you would not decorate them with ```@ray.remote```)
+- **Note:** Because these classes are *owned* by the *SymbolWorker* actor, there would probably be no practical reason to make them [RAY](https://www.ray.io/) actors (i.e. you would not decorate them with ```@ray.remote```)
 
 ### General
 - In a *real* application, you will probably want to add the facility to add and remove subscriptions (in this case stock symbols), while the process is already running.
