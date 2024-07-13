@@ -64,6 +64,7 @@ Imagine data comes in looking something like this:
 - In a *real* application, you will probably want to add the facility to add and remove subscriptions (in this case stock symbols), while the process is already running.
 - The methods to start and stop streaming / processing will need to be tailored for the way in which you call it from your application.
 - There are notes throughout the docstrings that further describe how the code might be adapted to specific needs.
+- If you intend to adapt this to do anything critical with, **please** fully test it first!
 
 ## Results Output
 When the application is run, it currently outputs to the console *similar* to the following:
