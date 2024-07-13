@@ -1,4 +1,4 @@
-# ray-streamer: Parallel processing data from a streaming API with Ray
+# ray-streamer: Parallel Processing Data From a Streaming API With Ray
 
 ## Introduction
 I created this concept application to *hopefully* help others and to garner constructive feedback as to how it might be improved.
