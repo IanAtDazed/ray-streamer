@@ -3,6 +3,8 @@
 ## Introduction
 I created this concept application to *hopefully* help others and to garner constructive feedback as to how it might be improved.
 
+**Please Note:** I have used a more complex version of this code in an application that streams and analyzes intraday stock market data from the Schwab Developer API, so I can vouch that the general principles work in *real life*. (However, please thoroughly **TEST** whatever you end up doing with it!)
+
 ## The Problem
 Imagine you need to stream rapidly changing data from a 3rd party API.
 
